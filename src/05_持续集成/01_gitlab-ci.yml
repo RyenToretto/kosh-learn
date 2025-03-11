@@ -1,0 +1,32 @@
+# .gitlab-ci.yml 示例
+stages:
+  - test
+  - lint
+  - deploy
+
+variables:
+  SHELL_OPTS: "-euo pipefail"
+
+# 运行测试
+test:
+  stage: test
+  script:
+    - bash $SHELL_OPTS ./run_tests.sh
+  artifacts:
+    reports:
+      junit: test-results.xml
+
+# Shell脚本检查
+lint:
+  stage: lint
+  script:
+    - shellcheck *.sh
+    - bash -n *.sh
+
+# 部署
+deploy:
+  stage: deploy
+  script:
+    - ./deploy.sh
+  only:
+    - master

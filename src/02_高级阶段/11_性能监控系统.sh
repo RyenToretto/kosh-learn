@@ -52,3 +52,5 @@ generate_performance_report() {
 
     } > "$report_file"
 }
+
+performance_monitor 1 2

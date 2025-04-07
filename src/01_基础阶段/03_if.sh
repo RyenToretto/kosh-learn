@@ -1,5 +1,8 @@
 #!/bin/bash
 
+age=23
+score=61
+
 # 基本if语句
 if [ $age -gt 18 ]; then
     echo "成年人"

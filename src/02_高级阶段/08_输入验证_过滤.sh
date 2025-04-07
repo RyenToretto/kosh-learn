@@ -5,19 +5,19 @@ validate_input() {
     if [ -z "$input" ]; then
         echo "错误: 输入不能为空" >&2
         return 1
-    }
+    fi
 
     # 检查特殊字符
     if [[ "$input" =~ [^a-zA-Z0-9_-] ]]; then
         echo "错误: 输入包含非法字符" >&2
         return 1
-    }
+    fi
 
     # 长度限制
     if [ ${#input} -gt 32 ]; then
         echo "错误: 输入超过最大长度" >&2
         return 1
-    }
+    fi
 
     return 0
 }
@@ -33,13 +33,13 @@ validate_path() {
     if [[ "$path" =~ \.\. ]]; then
         echo "错误: 检测到路径遍历攻击" >&2
         return 1
-    }
+    fi
 
     # 检查权限
     if [ ! -w "$path" ]; then
         echo "错误: 无写入权限" >&2
         return 1
-    }
+    fi
 
     return 0
 }
